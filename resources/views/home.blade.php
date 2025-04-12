@@ -57,6 +57,8 @@
             </div>
           </div>
 
+          
+
           <footer class="text-tertiary">
             <div class="flex justify-center items-center py-12 px-32">
                 <a href="#" class="text-dark text-opacity-75 mx-2 fs-6" style="text-decoration: none">Home</a>
