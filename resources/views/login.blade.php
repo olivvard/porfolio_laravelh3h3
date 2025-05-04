@@ -23,102 +23,84 @@
         @endif
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
-      {{-- header --}}
-      <header>
-        <div class="flex justify-between md:justify-center md:gap-10 items-center px-12 py-12">
-        <!-- Logo -->
-        <div class="flex items-center" id="logo">
-            <img src="{{ asset('images/bmthlogo_white.png') }}" alt="" class="md:w-30 w-20">
-            <a href="#" class="text-white md:text-3xl text-4xl ms-3">Olivvard</a>
-        </div>
-
-        <!-- Burger Icon (small screens only) -->
-        <div class="md:hidden cursor-pointer" id="burger-icon">
-            <i class="fa-solid fa-burger text-4xl text-tertiary"></i>
-        </div>
-
-        <!-- Nav (medium+ screens only) -->
-        <nav class="hidden md:block bg-tertiary py-2 px-5 rounded-full" id="burger-menu">
-            <ul class="flex items-center gap-3">
+    
+        {{-- header --}}
+        <header>
+            <div class="flex justify-between md:justify-center md:gap-10 items-center px-12 py-12">
+            <!-- Logo -->
+            <div class="flex items-center" id="logo">
+                <img src="{{ asset('images/bmthlogo_white.png') }}" alt="" class="md:w-30 w-20">
+                <a href="#" class="text-white md:text-3xl text-4xl ms-3">Olivvard</a>
+            </div>
+    
+            <!-- Burger Icon (small screens only) -->
+            <div class="md:hidden cursor-pointer" id="burger-icon">
+                <i class="fa-solid fa-burger text-4xl text-tertiary"></i>
+            </div>
+    
+            <!-- Nav (medium+ screens only) -->
+            <nav class="hidden md:block bg-tertiary py-2 px-5 rounded-full" id="burger-menu">
+                <ul class="flex items-center gap-3">
+                    <li><a href="/home" class="text-secondary">Home</a></li>
+                    <li><a href="/about" class="text-secondary">About</a></li>
+                    <li><a href="/blog" class="text-secondary">Blog</a></li>
+                    <li><a href="/contact" class="text-secondary">Contact</a></li>
+                    <li><a href="/login" class="text-secondary">Login</a></li>
+                </ul>
+            </nav>
+            </div>
+    
+            <!-- Dropdown Menu for Small Screens -->
+            <nav class="md:hidden hidden bg-tertiary mt-4 mx-6 rounded-xl p-4" id="mobile-menu">
+            <ul class="flex flex-col gap-3">
                 <li><a href="/home" class="text-secondary">Home</a></li>
                 <li><a href="/about" class="text-secondary">About</a></li>
                 <li><a href="/blog" class="text-secondary">Blog</a></li>
                 <li><a href="/contact" class="text-secondary">Contact</a></li>
                 <li><a href="/login" class="text-secondary">Login</a></li>
             </ul>
-        </nav>
+            </nav>
+        </header>
+        
+        {{-- main content --}}
+        <div class="bg-secondary">
+            <div class="py-12 px-12">
+                <div class="w-full">
+                    <div class="py-6">
+                        <div class="text-6xl text-purple-500 text-center font-bold">LOGIN</div>
+                        <div class="text-base text-tertiary text-center">Login to proceed</div>
+                    <form action="{{ route('login.process') }}" method="POST">
+                        <div class="flex justify-center flex-col items-center">
+                            {{-- inputs --}}
+                                <div class="relative w-60 md:w-120 group mt-5 mb-2" id="username">
+                                    <span class="absolute -left-0.5 top-2 bottom-2 w-1.5 rounded bg-gradient-to-b from-indigo-500 to-purple-500 opacity-70 transition-all duration-300 group-focus-within:opacity-100"></span>
+                                    <input type="text" id="input" name="username" class="peer w-full pl-6 pr-4 pt-6 pb-2 text-sm text-gray-800 bg-white border border-gray-200 rounded-lg shadow-md focus:border-transparent focus:ring-2 focus:ring-indigo-300 focus:outline-none transition-all duration-300 delay-200 placeholder-transparent"/>
+                                    <label for="input" class="absolute left-6 top-3.5 text-sm text-gray-500 transition-all duration-200 ease-in-out peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-sm peer-focus:text-indigo-500 peer-focus:font-semibold cursor-text">Username</label>
+                                </div>
+                                <div class="relative w-60 md:w-120 group mt-5 mb-2 id="password">
+                                    <span class="absolute -left-0.5 top-2 bottom-2 w-1.5 rounded bg-gradient-to-b from-indigo-500 to-purple-500 opacity-70 transition-all duration-300 group-focus-within:opacity-100"></span>
+                                    <input type="text" id="input" name="password" class="peer w-full pl-6 pr-4 pt-6 pb-2 text-sm text-gray-800 bg-white border border-gray-200 rounded-lg shadow-md focus:border-transparent focus:ring-2 focus:ring-indigo-300 focus:outline-none transition-all duration-300 delay-200 placeholder-transparent"/>
+                                    <label for="input" class="absolute left-6 top-3.5 text-sm text-gray-500 transition-all duration-200 ease-in-out peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-sm peer-focus:text-indigo-500 peer-focus:font-semibold cursor-text">Password</label>
+                                </div>
+                            {{-- register/remember --}}
+                            <div class="flex flex-col my-5 md:flex-row justify-between items-center gap-5 md:gap-20">
+                                <span><label class="relative flex items-center cursor-pointer group">
+                                    <input class="peer sr-only" type="checkbox" />
+                                    <div class="w-6 h-6 rounded-sm bg-white border-2 border-purple-500 transition-all duration-300 ease-in-out peer-checked:bg-gradient-to-br from-purple-500 to-pink-500 peer-checked:border-0 peer-checked:rotate-12 after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-5 after:h-5 after:opacity-0 after:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=')] after:bg-contain after:bg-no-repeat peer-checked:after:opacity-100 after:transition-opacity after:duration-300 hover:shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
+                                    <span class="ml-3 text-tertiary text-sm md:text-base">Remember me</span>
+                                  </label></span>
+                                <span class="text-tertiary text-sm md:text-base">Don't have an account? <span class="underline hover:text-purple-600"><a href="/register">Register here</a></span></span>
+                            </div>
+                            {{-- submit button --}}
+                            <button type="submit" class="bg-tertiary py-3 px-25 md:px-55 font-semibold rounded hover:bg-gradient-to-br from-purple-500 to-pink-500 transition-all duration-300 ease-in-out cursor-pointer hover:text-white md:text-xl">LOGIN</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Dropdown Menu for Small Screens -->
-        <nav class="md:hidden hidden bg-tertiary mt-4 mx-6 rounded-xl p-4" id="mobile-menu">
-        <ul class="flex flex-col gap-3">
-            <li><a href="/home" class="text-secondary">Home</a></li>
-            <li><a href="/about" class="text-secondary">About</a></li>
-            <li><a href="/blog" class="text-secondary">Blog</a></li>
-            <li><a href="/contact" class="text-secondary">Contact</a></li>
-            <li><a href="/login" class="text-secondary">Login</a></li>
-        </ul>
-        </nav>
-    </header>
-
-        <section id="contact">
-            <div class="bg-secondary py-24 sm:py-32">
-                <div class="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
-                  <div class="max-w-xl">
-                    <h2 class="text-3xl font-semibold tracking-tight text-pretty text-white sm:text-4xl">Meet our Team</h2>
-                    <p class="mt-6 text-lg/8 text-tertiary">We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.</p>
-                  </div>
-                  <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-                    <li>
-                      <div class="flex items-center gap-x-6">
-                        <img class="size-25 rounded-full grayscale hover:grayscale-0 transition-all duration-500" src="{{ asset('images/IMG_20240927_142258_943.jpg') }}" alt="">
-                        <div>
-                          <h3 class="text-2xl/7 font-semibold tracking-tight text-white">Rahmat Rivaldo</h3>
-                          <p class="text-sm/6 font-semibold text-tertiary">Co-Founder / CEO</p>
-                          <p class="text-sm/6 font-semibold text-tertiary">rahmatrivaldo666@gmail.com</p>
-                          <p class="text-sm/6 font-semibold text-tertiary">+62 822 8936 5996</p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                        <div class="flex items-center gap-x-6">
-                          <img class="size-25 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="{{ asset('images/budi.jpg') }}" alt="">
-                          <div>
-                            <h3 class="text-2xl/7 font-semibold tracking-tight text-white">Budi Santoso</h3>
-                            <p class="text-sm/6 font-semibold text-tertiary">Co-Founder</p>
-                            <p class="text-sm/6 font-semibold text-tertiary">example@email.com</p>
-                            <p class="text-sm/6 font-semibold text-tertiary">+62 888 8888 8888</p>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center gap-x-6">
-                          <img class="size-25 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="{{ asset('images/alpin.jpg') }}" alt="">
-                          <div>
-                            <h3 class="text-2xl/7 font-semibold tracking-tight text-white">Mhd Alfin Rubama</h3>
-                            <p class="text-sm/6 font-semibold text-tertiary">example@email.com</p>
-                            <p class="text-sm/6 font-semibold text-tertiary">+62 888 8888 8888</p>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="flex items-center gap-x-6">
-                          <img class="size-25 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="{{ asset('images/isan.jpg') }}" alt="">
-                          <div>
-                            <h3 class="text-2xl/7 font-semibold tracking-tight text-white">Ihsan Dwi Randa</h3>
-                            <p class="text-sm/6 font-semibold text-tertiary">Co-Founder</p>
-                            <p class="text-sm/6 font-semibold text-tertiary">example@email.com</p>
-                            <p class="text-sm/6 font-semibold text-tertiary">+62 888 8888 8888</p>
-                          </div>
-                        </div>
-                      </li>
-                    <!-- More people... -->
-                  </ul>
-                </div>
-              </div>
-        </section>
-
-              {{-- footer --}}
+        {{-- footer --}}
         <footer class="text-tertiary">
             <div class="flex justify-center items-center py-12 px-32">
                 <a href="#" class="text-dark text-opacity-75 mx-2 fs-6" style="text-decoration: none">Home</a>
@@ -129,20 +111,20 @@
                 <span class="text-dark text-opacity-75 mx-1" style="font-size: 0.2em;"><i class="fa-solid fa-circle"></i></span>
                 <a href="#" class="text-dark text-opacity-75 mx-2 fs-6" style="text-decoration: none">Contact</a>
             </div>
-    </footer>
+        </footer>
+
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
 
-    
         <script>
-          const burgerIcon = document.getElementById('burger-icon');
-          const mobileMenu = document.getElementById('mobile-menu');
-  
-          burgerIcon.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-              });
-      </script>
-        
+            const burgerIcon = document.getElementById('burger-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+    
+            burgerIcon.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+                });
+        </script>
+
     </body>
 </html>
