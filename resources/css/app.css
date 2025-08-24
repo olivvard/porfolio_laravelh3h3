@@ -15,3 +15,8 @@
     --color-secondary : #18181b;
     --color-tertiary : #e4e4e7;
 }
+
+.navbar-active{
+    font-weight: bolder;
+    color: #006eff;
+}

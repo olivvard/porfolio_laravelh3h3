@@ -4,31 +4,31 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['title' => 'Home']);
 });
 
 Route::get('/home', function () {
-    return view('home');
+    return view('home', ['title' => 'Home']);
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', ['title' => 'About']);
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+    return view('blog', ['title' => 'Blog']);
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', ['title' => 'Contact']);
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('login', ['title' => 'Login']);
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('register', ['title' => 'Register']);
 });
 
 // Route for login
